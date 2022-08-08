@@ -22,6 +22,7 @@ public class MultipleLogins_stepDefinitions {
 
 
         String actualHolder = pageObj.userNameOnTop.getText();
+        System.out.println(actualHolder);
         Assert.assertEquals(expectedHolder, actualHolder);
 
 
