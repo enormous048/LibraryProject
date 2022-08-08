@@ -46,6 +46,7 @@ public class LoginPage_stepDefinitions {
 
         Assert.assertTrue(pageObj.board.isDisplayed());
 
+
     }
 
 
