@@ -6,8 +6,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.opera.OperaDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
+import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
 public class Driver {
@@ -24,6 +27,19 @@ public class Driver {
             String browserName = ConfigurationReader.getProperty("browser");
 
             switch (browserName){
+                case "remote-chrome":
+                    try {
+                        // assign your grid server address
+                        String gridAddress = "34.227.8.157";
+                        URL url = new URL("http://" + gridAddress + ":4444/wd/hub");
+                        DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
+                        desiredCapabilities.setBrowserName("chrome");
+                        driverPool.set( new RemoteWebDriver(url, desiredCapabilities) );
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    break;
+
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
                     driverPool.set(new ChromeDriver());
