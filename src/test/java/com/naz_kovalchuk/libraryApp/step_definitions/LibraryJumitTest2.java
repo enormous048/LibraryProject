@@ -43,7 +43,14 @@ public class LibraryJumitTest2 {
         appPageObj.bookSubmitButton.click();
 
 
+
         Driver.getDriver().navigate().back();
+
+        Driver.getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 10);
+        wait.until(ExpectedConditions.visibilityOf(appPageObj.bookCount ));
+
+        Driver.getDriver().manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
         String expected = appPageObj.bookCount.getText();
         Driver.closeDriver();
