@@ -3,16 +3,18 @@ package com.naz_kovalchuk.libraryApp.step_definitions;
 import com.github.javafaker.Faker;
 import com.naz_kovalchuk.libraryApp.utility.Driver;
 import io.cucumber.java.en.When;
+import org.junit.Assert;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
 public class DDPU_salvation {
 
 
+    int count = 1;
     @When("something happens")
     public void something_happens() {
 
-        for (int i = 1; i <= 40; i++) {
+        for (int i = 1; i <= 110; i++) {
             Driver.getDriver().get("https://docs.google.com/forms/d/e/1FAIpQLSfcN_88HawJwUcqLyxZ0NlKxieX354fwVlyhJPWIIlmBl77Bg/viewform");
 
 
@@ -93,6 +95,8 @@ public class DDPU_salvation {
             Driver.getDriver().findElement(By.xpath("//*[@id=\"mG61Hd\"]/div[2]/div/div[3]/div/div[1]/div/span/span")).click();
 
 
+            Assert.assertEquals(random, random);
+            System.out.println("random = " + random);
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -106,6 +110,14 @@ public class DDPU_salvation {
                 Thread.sleep(time);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
+            }
+            count++;
+            if (count==40){
+                try {
+                    Thread.sleep(6000000);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
 
         }
