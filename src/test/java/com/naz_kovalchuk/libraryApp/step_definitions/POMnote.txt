@@ -1,0 +1,7 @@
+If in one java file you dealing with test that create multiple sessions
+then you should initialise page object variable outside methods
+but the onject itself inside those mathods separately.
+
+
+Because after quitting session the page object still call driver session that was closed,
+and it wont find any web elements there.
