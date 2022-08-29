@@ -1,5 +1,11 @@
 package com.naz_kovalchuk.libraryApp.step_definitions.Yandex;
 
+import io.cucumber.java.en.When;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+
+import static io.restassured.RestAssured.given;
+
 public class stepDefs {
 
 
@@ -9,6 +15,7 @@ public class stepDefs {
         String text = "hey";
         String key = "trnsl.1.1.20220829T080551Z.283a59d4e4025aa7.89a479dd22ac2e957fbc1f427fe00496a6f78e00";
 
+        //trnsl.1.1.20220829T080551Z.283a59d4e4025aa7.89a479dd22ac2e957fbc1f427fe00496a6f78e00
 
         //https://translate.yandex.net/api/v1.5/tr.json/translate
         Response response = given().log().all()
@@ -23,6 +30,7 @@ public class stepDefs {
         System.out.println(response.body().asString());
 
     }
+
 
 
 }
